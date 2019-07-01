@@ -1,3 +1,4 @@
+# Assignment 1
 Using the LinkedList from Assignment 1, a Queue is implemented as a class template and create a sorting algorithm. 
 
 The algorithm for sorting will work as follows:
