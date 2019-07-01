@@ -1,0 +1,150 @@
+/* Author: R.Feron		StNo:c3256870		Lab:Tuesday 12pm
+Date: 3 - November - 2017
+Course: SENG1120
+Task: Assignment 3
+
+This file contains is the implementations file for the node class. It contains the implementations of the member functions listed in the header file.
+*/
+
+#include <cstdlib>
+
+namespace lab09
+{
+	template <typename item>
+	node<item>::node(const item& init_data, node<item>* init_parent, node<item>* init_left, node<item>* init_right)
+	{
+		data = init_data;	//set the data of the node to the init_data (item() if not provided)
+		parent = init_parent;	//set the parent pointer to the init_parent pointer provided (NULL if not provided)
+		left = init_left;	//set the left child pointer to the init_left pointer provided (NULL if not provided)
+		right = init_right;	//set the right child pointer to the init_right pointer provided (NULL if not provided)
+	}
+	
+	template<typename item>
+	node<item>::~node()
+	{
+		parent = NULL;	//set the parent pointer to null
+		left = NULL;	//set the left child pointer to null
+		right = NULL;	//set the right child pointer to null
+	}
+	
+	template <typename item>
+	void node<item>::set_data(const item& new_data)
+	{
+		data = new_data;	//set the node data to the supplied entry
+	}
+	
+	template <typename item>
+	void node<item>::set_left(node<item>* left_child)
+	{
+		left = left_child;	//set the left child pointer to the supplied entry
+	}
+	
+	template <typename item>
+	void node<item>::set_right(node<item>* right_child)
+	{
+		right = right_child;	//set the right child pointer to the supplied entry
+	}
+	
+	template<typename item>
+	void node<item>::set_parent(node<item>* parent_node)
+	{
+		parent = parent_node;	//set the parent pointer to the supplied entry
+	}
+	
+	template <typename item>
+	item node<item>::get_data() const
+	{
+		return data;	//return the data contained by the node
+	}
+	
+	template <typename item>
+	item& node<item>::get_data()
+	{
+		return data;	//return the data contained by the node
+	}
+	
+	template<typename item>
+	void node<item>::set_grade_data(const int new_grade)
+	{
+		data.set_grade(new_grade);	//set the grade of the student to the supplied entry
+	}
+	
+	template <typename item>
+	std::string node<item>::data_name() const
+	{
+		return data.get_name();	//return the name of the student
+	}
+	
+	template <typename item>
+	std::string& node<item>::data_name() 
+	{
+		return data.get_name();	//return the name of the student
+	}
+	
+	template <typename item>
+	int node<item>::data_grade() const
+	{
+		return data.get_grade();	//return the grade of the student
+	}
+	
+	template <typename item>
+	int& node<item>::data_grade() 
+	{
+		return data.get_grade();	//return the grade of the student
+	}
+	
+	template <typename item>
+	const node<item>* node<item>::get_left() const
+	{
+		return left;	//return the left child pointer
+	}
+	
+	template <typename item>
+	node<item>* node<item>::get_left()
+	{
+		return left;	//return the left child pointer
+	}
+	
+	template <typename item>
+	const node<item>* node<item>::get_right() const
+	{
+		return right;	//return the right child pointer
+	}
+	
+	template <typename item>
+	node<item>* node<item>::get_right()
+	{
+		return right;	//return the right child pointer
+	}
+	
+	template <typename item>
+	const node<item>* node<item>::get_parent() const
+	{
+		return parent;	//return the parent pointer
+	}
+	
+	template <typename item>
+	node<item>* node<item>::get_parent()
+	{
+		return parent;	//return the parent pointer
+	}
+	
+	template <typename item>
+	bool node<item>::is_leaf() const
+	{
+		return ((left == NULL) && (right == NULL));	//if the left child and right child pointers are null return true
+	}
+	
+	template<typename item>
+	bool node<item>::has_one_child() const
+	{
+		return ((left == NULL) && (right != NULL)) || ((left != NULL) && (right == NULL));		//if either the left child is pointing to null or the right child is pointing to null (but not both) return true
+	}
+	
+	template<typename item>
+	bool node<item>::is_right_child() const
+	{
+		return data.get_name() > parent->data_name();	//if the node data is greater than the parent data return true (according to student name)
+	}
+
+}

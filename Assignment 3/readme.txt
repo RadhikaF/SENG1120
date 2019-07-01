@@ -1,0 +1,1 @@
+The "datafile.txt" file contains all the students names and grades. The program retrieves the information from the file and stores it in a binary search tree. To use it, make sure that in the line of inFile.open("datafile.txt") that either the correct location of the file is use or the file is stored in the same place as cygwin is running.
